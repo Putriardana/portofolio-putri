@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portofolio - Nama Kamu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tinta: #15152e;
+      --kertas: #f3f0ff;
+      --putih: #ffffff;
+      --aksen: #ffd23f;           /* berubah tiap menu */
+      --kuning: #ffd23f;
+      --mint: #4fe3b0;
+      --pink: #ff7eb6;
+      --biru: #7aa2ff;
+      --tebal: 3px solid var(--tinta);
+      --bayangan: 6px 6px 0 var(--tinta);
+      --judul: "Bricolage Grotesque", "Arial Black", Impact, sans-serif;
+      --isi: "DM Sans", "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--isi);
+      color: var(--tinta);
+      background: var(--kertas);
+      line-height: 1.6;
+      transition: background .4s;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 48px 0 28px; }
+    .hero small {
+      display: inline-block;
+      background: var(--tinta); color: var(--putih);
+      padding: 4px 14px; border-radius: 999px; font-weight: 700; font-size: .9rem;
+    }
+    .hero h1 {
+      font-family: var(--judul);
+      font-weight: 800;
+      font-size: clamp(2.6rem, 9vw, 5.6rem);
+      line-height: 1;
+      letter-spacing: -.03em;
+      margin: 16px 0 10px;
+    }
+    .hero h1 .sorot {
+      background: var(--aksen);
+      padding: 0 .12em;
+      border: var(--tebal);
+      box-shadow: var(--bayangan);
+      display: inline-block;
+      transform: rotate(-1.5deg);
+      transition: background .3s;
+    }
+    .hero p { max-width: 52ch; font-size: 1.1rem; }
+
+    /* ---------- MENU ---------- */
+    nav { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 0 34px; }
+    nav button {
+      font: 700 1rem var(--isi);
+      color: var(--tinta);
+      padding: 12px 22px;
+      background: var(--putih);
+      border: var(--tebal);
+      border-radius: 14px;
+      box-shadow: 4px 4px 0 var(--tinta);
+      cursor: pointer;
+      transition: transform .12s, box-shadow .12s, background .2s;
+    }
+    nav button[data-target="about"]:hover, nav button[data-target="about"].aktif { background: var(--kuning); }
+    nav button[data-target="skill"]:hover, nav button[data-target="skill"].aktif { background: var(--mint); }
+    nav button[data-target="achievement"]:hover, nav button[data-target="achievement"].aktif { background: var(--pink); }
+    nav button[data-target="contact"]:hover, nav button[data-target="contact"].aktif { background: var(--biru); }
+    nav button:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tinta); }
+    nav button:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--tinta); }
+    nav button.aktif { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--tinta); }
+    nav button:focus-visible { outline: 3px dashed var(--tinta); outline-offset: 4px; }
+
+    /* ---------- PANEL ---------- */
+    .panel {
+      background: var(--aksen);
+      border: var(--tebal);
+      border-radius: 22px;
+      box-shadow: 10px 10px 0 var(--tinta);
+      padding: 34px clamp(18px, 4vw, 40px) 40px;
+      margin-bottom: 60px;
+      transition: background .3s;
+    }
+    section { display: none; }
+    section.aktif { display: block; animation: muncul .35s cubic-bezier(.2,1.4,.4,1); }
+    @keyframes muncul { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+
+    h2 { font-family: var(--judul); font-weight: 800; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: -.02em; margin-bottom: 4px; }
+    .sub { margin-bottom: 26px; font-weight: 500; }
+    h3 { font-family: var(--judul); font-weight: 600; font-size: 1.2rem; margin-bottom: 8px; }
+
+    .kartu {
+      background: var(--putih);
+      border: var(--tebal);
+      border-radius: 16px;
+      box-shadow: var(--bayangan);
+      padding: 20px 22px;
+    }
+    .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+    ul.daftar { padding-left: 20px; }
+    ul.daftar li { margin-bottom: 6px; }
+
+    /* ---------- ABOUT : kartu mahasiswa ---------- */
+    .kartu-mhs { padding: 0; overflow: hidden; transform: rotate(-2deg); transition: transform .25s; }
+    .kartu-mhs:hover { transform: rotate(0deg) scale(1.02); }
+    .kartu-mhs .kepala {
+      background: var(--tinta); color: var(--putih);
+      padding: 10px 18px; font-family: var(--judul); font-weight: 600; letter-spacing: .02em;
+      display: flex; justify-content: space-between; gap: 10px;
+    }
+    .kartu-mhs .badan { display: flex; gap: 16px; padding: 18px; }
+    .foto {
+      width: 104px; height: 128px; flex-shrink: 0;
+      border: var(--tebal); border-radius: 10px;
+      background: var(--pink);
+      display: flex; align-items: center; justify-content: center;
+      font: 800 2.2rem var(--judul);
+      overflow: hidden;
+    }
+    .foto img { width: 100%; height: 100%; object-fit: cover; }
+    .kartu-mhs dl { display: grid; grid-template-columns: 52px 1fr; gap: 6px 10px; font-size: .95rem; align-content: start; }
+    .kartu-mhs dt { opacity: .6; }
+    .kartu-mhs dd { font-weight: 700; }
+    .stempel {
+      display: inline-block; margin-top: 12px;
+      border: 2px solid var(--tinta); border-radius: 8px;
+      padding: 2px 10px; font-weight: 700; font-size: .85rem; background: var(--mint);
+    }
+
+    /* ---------- SKILL ---------- */
+    .skill { margin-bottom: 14px; }
+    .skill .baris { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 4px; }
+    .meter { height: 16px; border: 2px solid var(--tinta); border-radius: 999px; background: var(--kertas); overflow: hidden; }
+    .meter i { display: block; height: 100%; width: 0; background: var(--mint); border-right: 2px solid var(--tinta); transition: width .9s cubic-bezier(.2,.9,.3,1); }
+    .tools { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool {
+      border: 2px solid var(--tinta); border-radius: 12px; padding: 6px 14px; font-weight: 700;
+      background: var(--kertas); transition: transform .15s, background .15s; cursor: default;
+    }
+    .tool:nth-child(3n+1):hover { background: var(--kuning); transform: rotate(-4deg) scale(1.08); }
+    .tool:nth-child(3n+2):hover { background: var(--pink); transform: rotate(3deg) scale(1.08); }
+    .tool:nth-child(3n):hover   { background: var(--biru); transform: rotate(-2deg) scale(1.08); }
+
+    /* ---------- ACHIEVEMENT : garis waktu ---------- */
+    .waktu { position: relative; padding-left: 34px; }
+    .waktu::before {
+      content: ""; position: absolute; left: 10px; top: 6px; bottom: 6px;
+      border-left: 4px dashed var(--tinta);
+    }
+    .capaian { position: relative; margin-bottom: 24px; }
+    .capaian::before {
+      content: ""; position: absolute; left: -34px; top: 22px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--kuning); border: var(--tebal);
+    }
+    .capaian .tahun {
+      display: inline-block; background: var(--tinta); color: var(--putih);
+      font-weight: 700; padding: 1px 12px; border-radius: 999px; font-size: .85rem; margin-bottom: 8px;
+    }
+    .capaian .lembaga { font-weight: 500; opacity: .75; margin-bottom: 6px; }
+    .capaian a { color: var(--tinta); font-weight: 700; text-decoration-thickness: 3px; text-decoration-color: var(--pink); }
+
+    /* ---------- CONTACT ---------- */
+    .ubin { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-bottom: 26px; }
+    .ubin a {
+      display: block; text-decoration: none; color: var(--tinta);
+      background: var(--putih); border: var(--tebal); border-radius: 16px;
+      box-shadow: var(--bayangan); padding: 18px 20px;
+      transition: transform .15s, box-shadow .15s, background .15s;
+    }
+    .ubin a:hover { transform: translate(-3px, -3px) rotate(-1deg); box-shadow: 9px 9px 0 var(--tinta); background: var(--kuning); }
+    .ubin a:focus-visible { outline: 3px dashed var(--tinta); outline-offset: 4px; }
+    .ubin b { display: block; font-family: var(--judul); font-size: 1.25rem; }
+    .ubin span { word-break: break-all; font-size: .92rem; }
+    .ajakan { font-family: var(--judul); font-weight: 800; font-size: clamp(1.4rem, 4vw, 2rem); line-height: 1.2; max-width: 22ch; margin-bottom: 16px; }
+    .tombol {
+      display: inline-block; text-decoration: none; color: var(--putih); background: var(--tinta);
+      font-weight: 700; padding: 13px 26px; border-radius: 14px; border: var(--tebal);
+      box-shadow: 4px 4px 0 var(--putih); transition: transform .12s;
+    }
+    .tombol:hover { transform: translate(-2px, -2px); }
+    .tombol:focus-visible { outline: 3px dashed var(--putih); outline-offset: 4px; }
+
+    footer { text-align: center; padding: 0 20px 40px; font-weight: 500; }
+
+    @media (max-width: 560px) {
+      .kartu-mhs .badan { flex-direction: column; align-items: flex-start; }
+      nav button { flex: 1 1 calc(50% - 14px); padding: 12px 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="hero">
+      <small>Mahasiswa Baru Informatika</small>
+      <h1>Halo, aku <span class="sorot">Putri</span></h1>
+      <p>Klik menu di bawah untuk kenalan lebih jauh.</p>
+
+      <nav aria-label="Menu utama">
+        <button class="aktif" data-target="about">About Me</button>
+        <button data-target="skill">What I Can Do</button>
+        <button data-target="achievement">Achievement</button>
+        <button data-target="contact">Contact</button>
+      </nav>
+    </header>
+
+    <main class="panel">
+
+      <!-- ===== ABOUT ME ===== -->
+      <section id="about" class="aktif">
+        <h2>About Me</h2>
+        <p class="sub">Profil singkat, pendidikan, dan kegiatanku sekarang.</p>
+
+        <div class="grid">
+          <div>
+            <article class="kartu kartu-mhs" aria-label="Kartu identitas">
+              <div class="kepala"><span>KARTU MAHASISWA</span><span>Informatika</span></div>
+              <div class="badan">
+                <div class="foto">
+                  <!-- Ganti dengan fotomu: <img src="foto.jpg" alt="Foto profil"> -->
+                  NK
+                </div>
+                <div>
+                  <dl>
+                    <dt>Nama</dt><dd>Putri Rizki Ardana</dd>
+                    <dt>NIM</dt><dd>26050974111</dd>
+                    <dt>Prodi</dt><dd>Pendidikan Teknologi Informasi</dd>
+                  </dl>
+                  <span class="stempel">Mahasiswa Aktif</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="kartu">
+            <h3>Deskripsi</h3>
+            <p>
+              Aku mahasiswa baru Informatika yang suka penasaran soal cara kerja
+              aplikasi dan website. Saat ini aku sedang belajar pemrograman dan
+              pengembangan web dari nol, sambil mencoba membuat proyek-proyek kecil.
+            </p>
+          </div>
+
+          <div class="kartu">
+            <h3>Pendidikan</h3>
+            <ul class="daftar">
+              <li>S1 Informatika, Nama Universitas (2026 - sekarang)</li>
+              <li>SMA/SMK Nama Sekolah (2023 - 2026)</li>
+            </ul>
+          </div>
+
+          <div class="kartu">
+            <h3>Aktivitas Saat Ini</h3>
+            <ul class="daftar">
+              <li>Kuliah semester 1 Informatika</li>
+              <li>Belajar HTML, CSS, dan dasar pemrograman</li>
+              <li>Aktif di organisasi/UKM (isi sesuai kegiatanmu)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== WHAT I CAN DO ===== -->
+      <section id="skill">
+        <h2>What I Can Do</h2>
+        <p class="sub">Kemampuan dan layanan yang bisa aku kerjakan.</p>
+
+        <div class="grid">
+          <div class="kartu">
+            <h3>Skill</h3>
+            <div class="skill"><div class="baris"><span>HTML &amp; CSS</span><span>70%</span></div><div class="meter"><i data-lebar="70"></i></div></div>
+            <div class="skill"><div class="baris"><span>JavaScript Dasar</span><span>45%</span></div><div class="meter"><i data-lebar="45"></i></div></div>
+            <div class="skill"><div class="baris"><span>Python Dasar</span><span>50%</span></div><div class="meter"><i data-lebar="50"></i></div></div>
+            <div class="skill"><div class="baris"><span>Logika Pemrograman</span><span>60%</span></div><div class="meter"><i data-lebar="60"></i></div></div>
+          </div>
+
+          <div class="kartu">
+            <h3>Tools</h3>
+            <div class="tools">
+              <span class="tool">VS Code</span>
+              <span class="tool">Git</span>
+              <span class="tool">GitHub</span>
+              <span class="tool">Figma</span>
+              <span class="tool">Canva</span>
+              <span class="tool">Chrome DevTools</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ACHIEVEMENT ===== -->
+      <section id="achievement">
+        <h2>Achievement</h2>
+        <p class="sub">Pencapaian yang pernah aku raih, dari yang terbaru.</p>
+
+        <div class="waktu">
+          <article class="capaian">
+            <div class="kartu">
+              <span class="tahun">2026</span>
+              <h3>Peserta Pelatihan Dasar Pemrograman Web</h3>
+              <p class="lembaga">Nama Lembaga Penyelenggara</p>
+              <p>Menyelesaikan pelatihan dan membuat satu website sederhana sebagai proyek akhir.</p>
+              <p style="margin-top:8px"><a href="sertifikat2.jpg" target="_blank">Lihat dokumentasi</a></p>
+            </div>
+          </article>
+
+          <article class="capaian">
+            <div class="kartu">
+              <span class="tahun">2025</span>
+              <h3>Juara 2 Lomba Karya Tulis Ilmiah</h3>
+              <p class="lembaga">Dinas Pendidikan Kota Surabaya</p>
+              <p>Menulis karya ilmiah tentang pemanfaatan teknologi di sekolah.</p>
+              <p style="margin-top:8px"><a href="sertifikat1.jpg" target="_blank">Lihat sertifikat</a></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p class="sub">Pilih jalur yang paling nyaman buatmu.</p>
+
+        <div class="ubin">
+          <a href="mailto:nama@email.com"><b>Email</b><span>nama@email.com</span></a>
+          <a href="https://github.com/username" target="_blank" rel="noopener"><b>GitHub</b><span>github.com/username</span></a>
+          <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/username</span></a>
+          <a href="cv.pdf" target="_blank"><b>CV / Resume</b><span>Unduh CV (PDF)</span></a>
+        </div>
+
+        <p class="ajakan">Punya ide proyek atau mau kolaborasi? Yuk ngobrol.</p>
+        <a class="tombol" href="mailto:nama@email.com">Hubungi Saya</a>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>&copy; 2026 Nama Lengkap Kamu</footer>
+
+  <script>
+    const root = document.documentElement;
+    const tombol = document.querySelectorAll('nav button');
+    const bagian = document.querySelectorAll('main section');
+    const warna = { about: '#ffd23f', skill: '#4fe3b0', achievement: '#ff7eb6', contact: '#7aa2ff' };
+
+    function tampilkan(id) {
+      bagian.forEach(s => s.classList.toggle('aktif', s.id === id));
+      tombol.forEach(b => b.classList.toggle('aktif', b.dataset.target === id));
+      root.style.setProperty('--aksen', warna[id]);
+
+      // animasi meter skill setiap kali tab skill dibuka
+      document.querySelectorAll('.meter i').forEach(i => {
+        i.style.width = '0';
+        if (id === 'skill') setTimeout(() => i.style.width = i.dataset.lebar + '%', 60);
+      });
+    }
+
+    tombol.forEach(b => b.addEventListener('click', () => tampilkan(b.dataset.target)));
+  </script>
+</body>
+</html>
