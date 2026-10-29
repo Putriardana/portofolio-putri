@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portofolio - Nama Kamu</title>
+  <title>Portofolio.putriardana</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -200,6 +200,16 @@
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
     }
+/* perbaikan kartu mahasiswa v2 */
+#about .grid { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.kartu-mhs .kepala { flex-wrap: wrap; font-size: .9rem; }
+.kartu-mhs .kepala span { white-space: nowrap; }
+.kartu-mhs .badan { flex-wrap: wrap; }
+.kartu-mhs .badan > div:last-child { flex: 1 1 180px; min-width: 0; }
+.kartu-mhs dl { display: block; }
+.kartu-mhs dt { font-size: .8rem; margin-top: 8px; }
+.kartu-mhs dd { font-size: 1rem; overflow-wrap: break-word; }
+.foto { width: 92px; height: 116px; }
   </style>
 </head>
 <body>
@@ -232,8 +242,7 @@
               <div class="kepala"><span>KARTU MAHASISWA</span><span>Informatika</span></div>
               <div class="badan">
                 <div class="foto">
-                  <!-- Ganti dengan fotomu: <img src="foto.jpg" alt="Foto profil"> -->
-                  NK
+                  <img src="fotoku.jpg.jpeg" alt="Foto profil">
                 </div>
                 <div>
                   <dl>
@@ -250,26 +259,27 @@
           <div class="kartu">
             <h3>Deskripsi</h3>
             <p>
-              Aku mahasiswa baru Informatika yang suka penasaran soal cara kerja
-              aplikasi dan website. Saat ini aku sedang belajar pemrograman dan
-              pengembangan web dari nol, sambil mencoba membuat proyek-proyek kecil.
+              saya adalah mahasiswa baru program studi pendidikan teknologi informasi, Universitas Negeri Surabaya. saya memiliki ketertarikan tentang bagaimana cara kerja
+              aplikasi dan website. Saat ini saya sedang belajar pemrograman dan
+              pengembangan web dari nol, dengan mencoba membuat proyek-proyek kecil.
             </p>
           </div>
 
           <div class="kartu">
             <h3>Pendidikan</h3>
             <ul class="daftar">
-              <li>S1 Informatika, Nama Universitas (2026 - sekarang)</li>
-              <li>SMA/SMK Nama Sekolah (2023 - 2026)</li>
+              <li>S1 Pendidikan Teknologi Informasi, Universitas Negeri Surabaya (2026 - sekarang)</li>
+              <li>SMA Darul Ulum 1 Jombang (2023 - 2026)</li>
             </ul>
           </div>
 
           <div class="kartu">
             <h3>Aktivitas Saat Ini</h3>
             <ul class="daftar">
-              <li>Kuliah semester 1 Informatika</li>
+              <li>Kuliah semester 1 Pendidikan Teknologi Informasi</li>
               <li>Belajar HTML, CSS, dan dasar pemrograman</li>
-              <li>Aktif di organisasi/UKM (isi sesuai kegiatanmu)</li>
+              <li>Membuat projek basis data menggunakan xampp</li>
+              </li>
             </ul>
           </div>
         </div>
@@ -284,7 +294,7 @@
           <div class="kartu">
             <h3>Skill</h3>
             <div class="skill"><div class="baris"><span>HTML &amp; CSS</span><span>70%</span></div><div class="meter"><i data-lebar="70"></i></div></div>
-            <div class="skill"><div class="baris"><span>JavaScript Dasar</span><span>45%</span></div><div class="meter"><i data-lebar="45"></i></div></div>
+            <div class="skill"><div class="baris"><span>xampp</span><span>70%</span></div><div class="meter"><i data-lebar="45"></i></div></div>
             <div class="skill"><div class="baris"><span>Python Dasar</span><span>50%</span></div><div class="meter"><i data-lebar="50"></i></div></div>
             <div class="skill"><div class="baris"><span>Logika Pemrograman</span><span>60%</span></div><div class="meter"><i data-lebar="60"></i></div></div>
           </div>
@@ -295,7 +305,7 @@
               <span class="tool">VS Code</span>
               <span class="tool">Git</span>
               <span class="tool">GitHub</span>
-              <span class="tool">Figma</span>
+              <span class="tool">xampp</span>
               <span class="tool">Canva</span>
               <span class="tool">Chrome DevTools</span>
             </div>
@@ -311,21 +321,21 @@
         <div class="waktu">
           <article class="capaian">
             <div class="kartu">
-              <span class="tahun">2026</span>
-              <h3>Peserta Pelatihan Dasar Pemrograman Web</h3>
-              <p class="lembaga">Nama Lembaga Penyelenggara</p>
-              <p>Menyelesaikan pelatihan dan membuat satu website sederhana sebagai proyek akhir.</p>
-              <p style="margin-top:8px"><a href="sertifikat2.jpg" target="_blank">Lihat dokumentasi</a></p>
+              <span class="tahun">2025</span>
+              <h3>Peserta Penulis Cerpen</h3>
+              <p class="lembaga">Nyalanesia</p>
+              <p>Menulis cerita pendek yang berjudul Dari Abu Menuju Asa.</p>
+              <p style="margin-top:8px"><a href="sertifikat2.jpg.jpg" target="_blank">Lihat sertifikat</a></p>
             </div>
           </article>
 
           <article class="capaian">
             <div class="kartu">
               <span class="tahun">2025</span>
-              <h3>Juara 2 Lomba Karya Tulis Ilmiah</h3>
-              <p class="lembaga">Dinas Pendidikan Kota Surabaya</p>
-              <p>Menulis karya ilmiah tentang pemanfaatan teknologi di sekolah.</p>
-              <p style="margin-top:8px"><a href="sertifikat1.jpg" target="_blank">Lihat sertifikat</a></p>
+              <h3>Sertifikat English Course</h3>
+              <p class="lembaga">Natural English Course</p>
+              <p>Belajar speaking & grammar bahasa inggris.</p>
+              <p style="margin-top:8px"><a href="sertifikat1.jpg.jpg" target="_blank">Lihat sertifikat</a></p>
             </div>
           </article>
         </div>
@@ -337,10 +347,10 @@
         <p class="sub">Pilih jalur yang paling nyaman buatmu.</p>
 
         <div class="ubin">
-          <a href="mailto:nama@email.com"><b>Email</b><span>nama@email.com</span></a>
-          <a href="https://github.com/username" target="_blank" rel="noopener"><b>GitHub</b><span>github.com/username</span></a>
-          <a href="https://www.linkedin.com/in/username" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/username</span></a>
-          <a href="cv.pdf" target="_blank"><b>CV / Resume</b><span>Unduh CV (PDF)</span></a>
+          <a href="mailto:secputri42@email.com"><b>Email</b><span>secputri42@gmail.com</span></a>
+          <a href="https://github.com/Putriardana" target="_blank" rel="noopener"><b>GitHub</b><span>github.com/Putriardana</span></a>
+          <a href="https://www.linkedin.com/in/putri-ardana-aa3a1b440?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener"><b>LinkedIn</b><span>linkedin.com/in/putri ardana</span></a>
+          <a href="https://drive.google.com/file/d/1nVbQyDM1TP3q4ASZR8as-VZk0R8oxM5t/view?usp=drive_link" target="_blank"><b>CV / Resume</b><span>Unduh CV (PDF)</span></a>
         </div>
 
         <p class="ajakan">Punya ide proyek atau mau kolaborasi? Yuk ngobrol.</p>
@@ -350,7 +360,7 @@
     </main>
   </div>
 
-  <footer>&copy; 2026 Nama Lengkap Kamu</footer>
+  <footer>&copy; 2026 Putri Rizki Ardana</footer>
 
   <script>
     const root = document.documentElement;
